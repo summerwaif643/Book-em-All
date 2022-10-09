@@ -26,7 +26,10 @@ export class LoginComponent implements OnInit {
     console.log(this.loginForm.value); 
     let form = this.loginForm.value;
     // Send post request to nodejs 
-    this.httpClient.post('http://localhost:3000/login', form);
+    this.httpClient.post('http://localhost:3000/login', form).subscribe(res => {
+      console.log(res);
+      
+    });
 
 
     this.loginForm.reset();

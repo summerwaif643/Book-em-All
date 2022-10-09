@@ -1,7 +1,14 @@
 const express = require('express');
 var mysql = require('mysql');
 const app = express();
+const cors = require('cors');
 const PORT = 3000;
+
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+};
 
 var con = mysql.createConnection({
     host: "localhost",
@@ -22,8 +29,17 @@ app.post('/login', function(req, res, next){
     var data = req.body.params;
     console.log(data);
 
+    if (data){ 
+        res.sendStatus(200);
+    }
+
 });
 
+app.get('/login', function(req, res, next){
+    // write later
+});
+
+app.use(cors(corsOptions));
 
 // Last thing to appear on page
 app.listen(PORT, () => { 
