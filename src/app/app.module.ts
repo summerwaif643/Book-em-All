@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { FormBuilder } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Renderer2 } from '@angular/core';
 
 @NgModule({
   declarations: [

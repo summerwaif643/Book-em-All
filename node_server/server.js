@@ -14,7 +14,7 @@ const corsOptions ={
 
 app.use(express.urlencoded());
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors(corsOptions)); // doesnt work? 
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -32,17 +32,46 @@ var con = mysql.createConnection({
   
 });
 
+app.get('/loginGet', function(req, res){
+
+});
+
 app.post('/login', function(req, res, next){
+    // Application sends post. What to send? 
+
     // post and wait for changes on login component from angular 
     let username = req.body.username;
     let password = req.body.password;
 
     console.log(username, password);
 
+    let sql = "SELECT username, password FROM user";
+
+    con.query(sql, function(err, result){
+        if (err) throw err; 
+        // notation for query is 
+        // result[i] for row value 
+        // result[i].attribute for single attribute
+
+        for (let i=0; i < result.length; i++){
+            if (result[i].username == username && result[i].password == password ){
+                console.log('match!');
+                res.sendStatus(200);
+                // here do something about the username being logged. 
+                // 
+                break;
+            } 
+           
+        }
+
+        res.sendStatus(500);
+
+    })
+
 });
 
 app.get('/login', function(req, res, next){
-    // write later
+    // Application sends get. What to get? 
 });
 
 // Last thing to appear on page
