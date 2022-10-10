@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
     },
     err => {
         if (err.status === 500){
+            // Error code to handle here
             console.log('Username not found');
             this.error = '<div>Username non trovato</div>';
 
@@ -50,7 +51,7 @@ export class LoginComponent implements OnInit {
         if (err.status === 200){
             console.log('User correctly logged in ');
             // Handle log in in here
-
+            // send to ?id page as in floki 
         }
     });
     

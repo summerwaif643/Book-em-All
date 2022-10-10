@@ -32,7 +32,17 @@ var con = mysql.createConnection({
   
 });
 
-app.get('/loginGet', function(req, res){
+app.get('/loginGet/:id', function(req, res){
+
+    console.log(req.params);
+
+    // given req.id as the id passed from typescript
+    let sql = "SELECT username FROM user WHERE id = '" + req.params.id + "';"; 
+
+    con.query(sql, function(err, result) {
+        if (err) throw err; 
+        res.send(result[0].username);
+    })
 
 });
 

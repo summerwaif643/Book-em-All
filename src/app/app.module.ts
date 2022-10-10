@@ -10,13 +10,15 @@ import { FormBuilder } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Renderer2 } from '@angular/core';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    UserComponent
 
   ],
   imports: [
