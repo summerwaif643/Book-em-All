@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        
+      </div>
+      <div class="col-6">
+        <form [formGroup]="bookForm" (ngSubmit)="onSubmit()"  style="margin-top: 10%;">
+
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input type="text" id="user" class="form-control" formControlName="username"/>
+              <label class="form-label" for="user`">Username</label>
+            </div>
+          
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <input type="password" id="password" class="form-control" formControlName="password"/>
+              <label class="form-label" for="password">Password</label>
+            </div>
+          
+            <!-- 2 column grid layout for inline styling -->
+            <div class="row mb-4">
+              <div class="col d-flex justify-content-center">
+              </div>
+            </div>
+          
+            <!-- Submit button -->
+            <button class="button" type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+          
+          </form>
+      </div>
+      <div class="col">
+        
+      </div>
+    </div>

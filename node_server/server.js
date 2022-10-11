@@ -33,17 +33,28 @@ var con = mysql.createConnection({
 });
 
 app.get('/loginGet/:id', function(req, res){
-
-    console.log(req.params);
-
     // given req.id as the id passed from typescript
     let sql = "SELECT username FROM user WHERE id = '" + req.params.id + "';"; 
 
     con.query(sql, function(err, result) {
-        if (err) throw err; 
-        res.send(result[0].username);
+        if (err) throw err;
+
+        //might be broken
+        res.status(200).send(result[0].username);
     })
 
+});
+
+app.get('/getId/:username', function(req, res){
+
+    let sql = "SELECT id FROM user WHERE username = '" + req.params.username + "';";
+
+    con.query(sql, function(err, result){
+        if (err) throw err; 
+
+        // USE THIS FORMAT !!! ALWAYS SEND JSON 
+        res.status(200).send({id: result[0].id});
+    })
 });
 
 app.post('/login', function(req, res, next){
@@ -52,8 +63,6 @@ app.post('/login', function(req, res, next){
     // post and wait for changes on login component from angular 
     let username = req.body.username;
     let password = req.body.password;
-
-    console.log(username, password);
 
     let sql = "SELECT username, password FROM user";
 
@@ -68,13 +77,10 @@ app.post('/login', function(req, res, next){
                 console.log('match!');
                 res.sendStatus(200);
                 // here do something about the username being logged. 
-                // 
                 break;
             } 
            
         }
-
-        res.sendStatus(500);
 
     })
 

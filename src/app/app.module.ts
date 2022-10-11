@@ -11,6 +11,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Renderer2 } from '@angular/core';
 import { UserComponent } from './components/user/user.component';
+import { BookComponent } from './components/book/book.component';
+import { VisualizeBookingsComponent } from './components/visualize-bookings/visualize-bookings.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { UserComponent } from './components/user/user.component';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    UserComponent
+    UserComponent,
+    BookComponent,
+    VisualizeBookingsComponent
 
   ],
   imports: [

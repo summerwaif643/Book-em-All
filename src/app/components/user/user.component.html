@@ -1,0 +1,33 @@
+<div class="container" style="margin-top: 5%;">
+
+    <div class="row">
+        Hello, {{user}}
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <!-- Sidebar menu -->
+            <div class="row">
+                <button  type="button" class="btn btn-primary btn-lg" style="margin-top: 10%;" (click)="book()"> Prenota </button>
+            </div>
+            
+            <div class="row">
+                <button type="button" class="btn btn-secondary btn-lg" style="margin-top: 10%;" (click)="show()"> Visualizza prenotazioni </button>
+            </div>
+            
+            <div class="row">
+                <button type="button" class="btn btn-secondary btn-lg" style="margin-top: 10%;"> Logout </button>     
+            </div>
+                   
+        </div>
+        <div class="col-8">
+            <!-- Video selection, add components -->
+            <div [ngSwitch]="componentToShow">
+
+                <app-book *ngSwitchCase="1"></app-book>
+                <app-visualize-bookings *ngSwitchCase="2"></app-visualize-bookings>
+
+            </div>
+        </div>
+    </div>
+</div>
